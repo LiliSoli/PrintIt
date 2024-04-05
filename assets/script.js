@@ -56,27 +56,52 @@ function setPositionLeft() {
   }
 }
 
-const listDots = document.querySelectorAll(".dot");
-const listArrow = document.querySelectorAll(".arrow");
-
-for (let i = 0; i < listArrow.length; i++) {
-  const arrow = listArrow[i];
-
-  arrow.addEventListener("click", (event) => {
-    arrowClicked = event.target;
-    console.log(`Flèche cliquée: ${arrowClicked.classList.value}`);
-
-    listDots[position].classList.remove("dot_selected");
-
-    if (arrowClicked.classList.value === "arrow arrow_right") {
-      setPositionRight();
-    }
-
-    if (arrowClicked.classList.value === "arrow arrow_left") {
-      setPositionLeft();
-    }
-
-    listDots[position].classList.add("dot_selected");
-    updateImage();
-  });
+function removeDotSelected() {
+  listDots[position].classList.remove("dot_selected");
 }
+
+function addDotSelected() {
+  listDots[position].classList.add("dot_selected");
+}
+
+const listDots = document.querySelectorAll(".dot");
+
+// const listArrow = document.querySelectorAll(".arrow");
+
+// for (let i = 0; i < listArrow.length; i++) {
+//   const arrow = listArrow[i];
+
+//   arrow.addEventListener("click", (event) => {
+//     arrowClicked = event.target;
+//     console.log(`Flèche cliquée: ${arrowClicked.classList.value}`);
+
+//     listDots[position].classList.remove("dot_selected");
+
+//     if (arrowClicked.classList.value === "arrow arrow_right") {
+//       setPositionRight();
+//     }
+
+//     if (arrowClicked.classList.value === "arrow arrow_left") {
+//       setPositionLeft();
+//     }
+
+//     listDots[position].classList.add("dot_selected");
+//     updateImage();
+//   });
+// }
+
+const arrowLeft = document.querySelector(".arrow_left");
+arrowLeft.addEventListener("click", () => {
+  removeDotSelected();
+  setPositionLeft();
+  addDotSelected();
+  updateImage();
+});
+
+const arrowRight = document.querySelector(".arrow_right");
+arrowRight.addEventListener("click", () => {
+  removeDotSelected();
+  setPositionRight();
+  addDotSelected();
+  updateImage();
+});
