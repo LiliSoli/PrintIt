@@ -20,11 +20,11 @@ const slides = [
 
 let position = 0;
 
+/***Création d'une div pour chaque image de slides***/
 function displayDots() {
   let divDots = document.getElementById("dots");
   for (let i = 0; i < slides.length; i++) {
     let newDivDot = document.createElement("div");
-    console.log(newDivDot);
 
     newDivDot.classList.add("dot");
     if (i === position) {
@@ -34,9 +34,12 @@ function displayDots() {
     divDots.appendChild(newDivDot);
   }
 }
+
 displayDots();
+
 const listDots = document.querySelectorAll(".dot");
 
+/***Au clic, changement image tagLine et dot_selected selon la position dans la boucle***/
 function arrowClicked(direction) {
 	listDots[position].classList.remove("dot_selected");
 	
